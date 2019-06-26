@@ -43,6 +43,15 @@ License: You must have a valid license purchased only from themeforest(the above
         <link href="/metronic/assets/layouts/layout/css/custom.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" />
+
+        @if(app()->getLocale() == 'ar')
+            <link rel="stylesheet" href="{{ asset('/') }}css/AdminLTE.min.css">
+            <link rel="stylesheet" href="{{ asset('/') }}css//bootstrap-rtl.min.css">
+            <link rel="stylesheet" href="{{ asset('/') }}css/rtl.css">
+            <link href="https://fonts.googleapis.com/css?family=Cairo:300,400,600&amp;subset=arabic,latin-ext" rel="stylesheet">
+        @endif
+
+
         @yield("css")
       </head>
     <!-- END HEAD -->
