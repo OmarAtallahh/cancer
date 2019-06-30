@@ -54,41 +54,19 @@
     <div class="container">
   </div>
 
-    <div class="hero-section">
-        <div class="container">
-            <div class="hero-text">
-                <h1>BCR Statistics</h1>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                   there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
-                    the Semantics, a large language ocean.</p>
-            </div>
-        </div>
-    </div>
+<div class="main">
+    <p class="sign" align="center">Login in</p>
+        <form class="form1" method="POST" action="{{ route('login') }}">
+            {{ csrf_field() }}
+            <input class="un" name="email"  type="email" align="center" placeholder="Email">
+            <input class="pass" name="password" type="password" align="center" placeholder="Password">
+            <input type="submit" class="submit" value="Sign in" align="center">
+        </form>
+    </p>
 
-    <div class="content-section">
-        <div class="container">
-            <div class="content-text">
-                <h1>Predict BCR</h1>
-                <p>A small river named Duden flows by their place and supplies it with the necessary
-                   regelialia. It is a paradisematic country, in which roasted parts of sentences fly
-                   into your mouth. Even the all-powerful Pointing has no control about the blind texts
-                   it is an almost unorthographic life.</p>
-            </div>
-        </div>
-    </div>
+    <p class="forgot" align="center"><a href="">Forgot Password?</p>
 
-    <div class="content-section">
-        <div class="container">
-            <div class="content-text">
-                <h1>Predict BCR</h1>
-                <p>A small river named Duden flows by their place and supplies it with the necessary
-                  regelialia. It is a paradisematic country, in which roasted parts of sentences fly
-                  into your mouth. Even the all-powerful Pointing has no control about the blind texts
-                  it is an almost unorthographic life.</p>
-            </div>
-        </div>
-    </div>
-
+</div>
 
 
     <script src="/interface/js/jquery.min.js"></script>

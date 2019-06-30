@@ -54,41 +54,23 @@
     <div class="container">
   </div>
 
-    <div class="hero-section">
-        <div class="container">
-            <div class="hero-text">
-                <h1>BCR Statistics</h1>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                   there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
-                    the Semantics, a large language ocean.</p>
-            </div>
-        </div>
-    </div>
+<div class="main" style="height: 750px;">
+    <p class="sign" align="center">Doctor Register</p>
+        <form class="form1" method="POST" action="{{ route('doctor_register') }}">
+            {{ csrf_field() }}
+            <input class="un" name="first_name"  type="text" align="center" placeholder="First Name">
+            <input class="un" name="last_name"  type="text" align="center" placeholder="Last Name">
+            <input class="un" name="email"  type="email" align="center" placeholder="Email">
+            <input class="un" name="phone_number"  type="text" align="center" placeholder="Phone Number">
+            <input class="un" name="hospital_name"  type="text" align="center" placeholder="Hospital Name">
+            <input class="un" name="job_id"  type="text" align="center" placeholder="Job Id">
+            <input class="pass" name="password" type="password" align="center" placeholder="Password">
+            <input class="pass" name="confirmed_password" type="password" align="center" placeholder="Confirmed Password">
+            <input type="submit" class="submit" value="Register" align="center">
+        </form>
 
-    <div class="content-section">
-        <div class="container">
-            <div class="content-text">
-                <h1>Predict BCR</h1>
-                <p>A small river named Duden flows by their place and supplies it with the necessary
-                   regelialia. It is a paradisematic country, in which roasted parts of sentences fly
-                   into your mouth. Even the all-powerful Pointing has no control about the blind texts
-                   it is an almost unorthographic life.</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="content-section">
-        <div class="container">
-            <div class="content-text">
-                <h1>Predict BCR</h1>
-                <p>A small river named Duden flows by their place and supplies it with the necessary
-                  regelialia. It is a paradisematic country, in which roasted parts of sentences fly
-                  into your mouth. Even the all-powerful Pointing has no control about the blind texts
-                  it is an almost unorthographic life.</p>
-            </div>
-        </div>
-    </div>
-
+</div>
 
 
     <script src="/interface/js/jquery.min.js"></script>
