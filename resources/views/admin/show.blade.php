@@ -6,40 +6,49 @@ About BCR
 
 @section("content")
 <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/admin">Home</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="/admin/create"> Add Doctor </a></li>
-            <li><a href="/admin">all Users</a></li>
-            <li><a href="/main/reports">View Reports</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="/main/index">Log Out<span class="sr-only">(current)</span></a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/admin/admin">الرئيسية </a>
       </div>
-    </nav>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/admin/admin/create"> إضافة طبيب</a></li>
+          <li><a href="/admin/admin">عرض الأطباء</a></li>
+          <li><a href="/admin/admin/reports">التقارير </a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">المزيد  <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="container">
+            <div class="row">
+            <div class="col-md-offset-11 ">
+        
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="/main/index">تسجيل خروج <span class="sr-only">(current)</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
 <br><br>
       <section class="page-section about-heading">
         <div class="container">
@@ -49,11 +58,11 @@ About BCR
               <div class="col-xl-9 col-lg-10 mx-auto">
                 <div class="bg-faded rounded p-5">
                   <h2 class="section-heading mb-4">
-                    <span class="section-heading-upper">Admin Dashboard</span>
+                    <span class="section-heading-upper">تفاصيل الطبيب </span>
                         <hr>
                   </h2>
                   <p>
-                  here you can see all information about this doctor.</p>
+                 يتم عرض معلومات الطبيب  كما تم إدخالها أول مرة مع تحديثها .</p>
               </div>
             </div>
           </div>
@@ -65,19 +74,19 @@ About BCR
       <div class="container">
         <div class="row">
            <dl class="dl-horizontal">
-              <dt>ID</dt>
+              <dt>الرقم التعريفي</dt>
               <dd>{{$doctor->id}}</dd>
-              <dt>first name</dt>
+              <dt>الاسم الأول </dt>
               <dd>{{$doctor->first_name}}</dd>
-              <dt>lastname</dt>
+              <dt>الاسم الأخير</dt>
               <dd>{{$doctor->last_name}}</dd>
-              <dt>job id</dt>
+              <dt>البريد الإلكتروني</dt>
               <dd>{{$doctor->email}}</dd>
-              <dt>job id</dt>
+              <dt>رقم المهنة</dt>
               <dd>{{$doctor->job_id}}</dd>
-              <dt>phone number</dt>
+              <dt>الهاتف </dt>
               <dd>{{$doctor->phone_number}}</dd>
-              <dt>hospital name</dt>
+              <dt>إسم المشفى</dt>
               <dd>{{$doctor->hospital_name}}</dd>
           </dl>
         </div>
@@ -86,8 +95,8 @@ About BCR
         <div class="container">
           <div class="row">
             <div class="col-md-4 col-md-push-2">
-            <a href="/admin" class="btn btn-default">Cancel</a>
-            <a href="/admin/{{$doctor->id}}/edit" class="btn btn-primary">Edit</a>
+            <a href="/admin/admin" class="btn btn-default">الرجوع </a>
+            <a href="/admin/admin/{{$doctor->id}}/edit" class="btn btn-primary">تعديل البيانات الشخصية </a>
            </div>
           </div>
         </div>

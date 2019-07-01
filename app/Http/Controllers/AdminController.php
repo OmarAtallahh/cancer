@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
-use App\doctor;
+use App\Doctor;
 use App\country;
 use App\report;
 
@@ -14,13 +14,13 @@ class AdminController extends Controller
      public function index()
      {
        // $doctors = DB::table("doctors")->get();//select * from doctors
-       $doctors = doctor::paginate(10);
+       $doctors = Doctor::paginate(10);
        return view("admin.index",compact("doctors"));
      }
     public function search()
     {
       $q=request()["q"];
-      $doctors = doctor::where("id","like","%$q%")->paginate(10);
+      $doctors = Doctor::where("id","like","%$q%")->paginate(10);
       return view("admin.index",compact("doctors","q"));
     }
 
@@ -63,7 +63,7 @@ class AdminController extends Controller
         //   "phone_number"=>$request["phone_number"],
         //   "hospital_name"=>$request["hospital_name"],
 
-       $doctors = new doctor();
+       $doctors = new Doctor();
        $doctors->first_name = $request["first_name"];
        $doctors->last_name = $request["last_name"];
        $doctors->email = $request["email"];
@@ -83,7 +83,7 @@ class AdminController extends Controller
     {
       //$doctor = DB::table("doctors")->find($id);
     //$account = DB::table("account")->where("id",$id)->first();
-      $doctor = doctor::find($id);
+      $doctor = Doctor::find($id);
        if($doctor == NULL)
        {
          return redirect("/admin");
@@ -127,7 +127,7 @@ class AdminController extends Controller
           'hospital_name' => 'required',
       ]);
 
-      $doctors = doctor::find($id);
+      $doctors = Doctor::find($id);
       $doctors->first_name = $request["first_name"];
       $doctors->last_name = $request["last_name"];
       $doctors->email = $request["email"];
@@ -152,7 +152,7 @@ class AdminController extends Controller
       public function destroy($id)
       {
       // DB::table("doctors")->where("id",$id)->delete();
-      $doctors = doctor::find($id);
+      $doctors = Doctor::find($id);
       $doctors->delete();
 
       Session::flash("msg","w: Doctor was deleted successfully");

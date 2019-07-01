@@ -9,14 +9,15 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('reset/password/{token}', 'AdminAuth@reset_password');
 	Route::post('reset/password/{token}', 'AdminAuth@reset_password_post');
 
-	Route::group(['middleware' => 'admin:admin'], function () {
+	Route::group(['middleware' => 'admin'], function () {
 
 		Route::any('logout', 'AdminAuth@logout');
 
 		Route::get('/admin/{id}/delete', 'AdminController@destroy');
 		Route::get('/admin/reports', 'AdminController@problems');
 		Route::resource('/admin', 'AdminController');
-		Route::get('/admin', 'AdminController@search');
+		Route::get('/admin', 'AdminController@search')->name('admin.index');
+		
 
 	});
 

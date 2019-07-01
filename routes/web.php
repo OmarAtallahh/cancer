@@ -27,7 +27,7 @@ Route::group(['middleware' => 'notauth'], function () {
 
 	Route::get('/doctor/register', 'UserAuth@getDoctorRegister')->name('doctor_register');
 	Route::post('/doctor/register', 'UserAuth@doctor_register')->name('doctor_register');
-
+																																																																																																																																																																																																														
 });
 
 Route::group(['middleware' => 'auth'], function () {

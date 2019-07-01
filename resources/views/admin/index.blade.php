@@ -14,15 +14,15 @@ About BCR
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/admin">Home</a>
+          <a class="navbar-brand" href="/admin/admin">الرئيسية </a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/admin/create"> Add Doctor </a></li>
-            <li><a href="/admin">all Users</a></li>
-            <li><a href="/admin/reports">View Reports</a></li>
+            <li><a href="/admin/admin/create"> إضافة طبيب</a></li>
+            <li><a href="/admin/admin">عرض الأطباء</a></li>
+            <li><a href="/admin/admin/reports">التقارير </a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">المزيد  <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
                 <li><a href="#">Another action</a></li>
@@ -34,9 +34,18 @@ About BCR
               </ul>
             </li>
           </ul>
+          <div class="container">
+              <div class="row">
+              <div class="col-md-offset-11 ">
+          
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="/main/index">Log Out<span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/main/index">تسجيل خروج <span class="sr-only">(current)</span></a></li>
           </ul>
+        </div>
+      </div>
+    </div>
+
+
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -50,10 +59,10 @@ About BCR
               <div class="col-xl-9 col-lg-10 mx-auto">
                 <div class="bg-faded rounded p-5">
                   <h2 class="section-heading mb-4">
-                    <span class="section-heading-upper">Admin Dashboard</span>
+                    <span class="section-heading-upper"> لوحة تحكم المدير</span>
                   </h2>
                   <p>
-                  here you can see all doctors information and u can edit and dalete whatever you want.</p>
+                من خلال استخدامك للوحة تحكم المدير يمكنك إدارة الموقع بشكل تام من خلال الصلاحيات المتاحة لك على المستخدمين الآخرين والمنشورات  وباقي العمليات في الموقع ...</p>
               </div>
             </div>
           </div>
@@ -63,10 +72,10 @@ About BCR
       <form class="row">
          <div class="container">
              <div class="col-md-6">
-                 <input autofocus value="{{$q}}" type="text" class="form-control" name="q" placeholder="Search_ID" />
+                 <input autofocus value="{{$q}}" type="text" class="form-control" name="q" placeholder="ابحث من رقم الطبيب" />
              </div>
              <div class="col-md-6">
-                 <input type="submit" value="Go" class="btn btn-primary" />
+                 <input type="submit" value=" ابحث" class="btn btn-primary" />
              </div>
          </div>
       </form>
@@ -78,17 +87,17 @@ About BCR
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>first_name</th>
-                    <th>last_name</th>
-                    <th>email</th>
-                    <th>job_id</th>
-                    <th>phone_number</th>
-                    <th>hospital_name</th>
+                    <th>#</th>
+                    <th>الاسم الاول </th>
+                    <th>الاسم الأخير</th>
+                    <th>البريد الإلكتروني </th>
+                    <th>رقم المهنة </th>
+                    <th>رقم الهاتف </th>
+                    <th>إسم المشفى</th>
                     <th width="10%"></th>
-                    <th>details</th>
-                    <th>edit</th>
-                    <th>delete</th>
+                    <th>تفاصل</th>
+                    <th>تعديل</th>
+                    <th>إزالة</th>
                 </tr>
             </thead>
             <tbody>
@@ -102,16 +111,16 @@ About BCR
                     <td>{{$a->phone_number}}</td>
                     <td>{{$a->hospital_name}}</td>
                     <td width="10%">
-                  <td>  <a href="/admin/{{$a->id}}" class="btn btn-xs btn-info">
+                  <td>  <a href="/admin/admin/{{$a->id}}" class="btn btn-xs btn-info">
                         <i class="glyphicon glyphicon-info-sign"></i>
                     </a></td>
                     <td>
-                      <a href="/admin/{{$a->id}}/edit" class="btn btn-xs btn-primary">
+                      <a href="/admin/admin/{{$a->id}}/edit" class="btn btn-xs btn-primary">
                             <i class="glyphicon glyphicon-edit"></i>
                       </a>
                   </td>
                     <td>
-                        <a onclick="return confirm('Are you sure dude?')" href="/admin/{{$a->id}}/delete"
+                        <a onclick="return confirm('Are you sure dude?')" href="/admin/admin/{{$a->id}}/delete"
                           class="btn btn-xs btn-danger">
                             <i class="glyphicon glyphicon-trash"></i>
                           </a>

@@ -15,7 +15,7 @@ class DoctorController extends Controller
     {
         $patients = patient::paginate(4);
         return view("main.patients",compact("patients"));
-    }
+    }   
 
     public function search()
     {
@@ -70,7 +70,7 @@ class DoctorController extends Controller
      Session::flash("msg","s: Doctor Account created successfully");
      return redirect("/doctor");
     }
-
+              
     /**
      * Display the specified resource.
      *
@@ -81,6 +81,7 @@ class DoctorController extends Controller
     {
       $patient = patient::find($id);
        if($patient == NULL)
+
        {
          return redirect("/doctors");
             }
@@ -119,6 +120,7 @@ class DoctorController extends Controller
      */
     public function destroy($id)
     {
+      
       $patient = patient::find($id);
       $patient->delete();
 
