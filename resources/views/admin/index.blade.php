@@ -39,7 +39,7 @@ About BCR
               <div class="col-md-offset-11 ">
           
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="/main/index">تسجيل خروج <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="/admin/login">تسجيل خروج <span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
       </div>

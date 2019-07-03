@@ -14,13 +14,13 @@ class AdminController extends Controller
      public function index()
      {
        // $doctors = DB::table("doctors")->get();//select * from doctors
-       $doctors = Doctor::paginate(10);
+       $doctors = Doctor::paginate(6);
        return view("admin.index",compact("doctors"));
      }
     public function search()
     {
       $q=request()["q"];
-      $doctors = Doctor::where("id","like","%$q%")->paginate(10);
+      $doctors = Doctor::where("id","like","%$q%")->paginate(6);
       return view("admin.index",compact("doctors","q"));
     }
 
@@ -75,7 +75,7 @@ class AdminController extends Controller
        $doctors->save();
 
      Session::flash("msg","s: Doctor Account created successfully");
-     return redirect("/admin/create");
+     return redirect("/admin/admin/create");
     }
 
 
@@ -139,7 +139,7 @@ class AdminController extends Controller
       $doctors->save();
 
    Session::flash("msg","s: Doctor Account updated successfully");
-   return redirect("/admin");
+   return redirect("/admin/admin");
 
     }
 
@@ -156,6 +156,6 @@ class AdminController extends Controller
       $doctors->delete();
 
       Session::flash("msg","w: Doctor was deleted successfully");
-      return redirect("/admin");
+      return redirect("/admin/admin");
       }
   }

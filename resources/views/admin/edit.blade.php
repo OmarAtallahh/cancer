@@ -70,7 +70,7 @@ About BCR
         <br><br>
       </section>
 
-      <form action="/admin/{{$doctor->id}}" method="post" class="form-horizontal">
+      <form action="/admin/admin/{{$doctor->id}}" method="post" class="form-horizontal">
         {{csrf_field()}}
         <input type="hidden" name="_method" value="put" />
 
