@@ -46,7 +46,7 @@ class AdminController extends Controller
             'first_name' => 'required|max:20',
             'last_name' => 'required|max:20',
             'email' => 'required|max:50|email',
-            'password' => 'required|max:50',
+            'password' => 'required|max:100',
             'country_id' => 'required',
             'job_id' => 'required',
             'phone_number' => 'required',
@@ -68,7 +68,7 @@ class AdminController extends Controller
        $doctors->last_name = $request["last_name"];
        $doctors->email = $request["email"];
        $doctors->country_id = $request["country_id"];
-       $doctors->password = $request["password"];
+       $doctors->password = bcrypt($request["password"]);
        $doctors->job_id = $request["job_id"];
        $doctors->phone_number = $request["phone_number"];
        $doctors->hospital_name = $request["hospital_name"];
@@ -132,7 +132,7 @@ class AdminController extends Controller
       $doctors->last_name = $request["last_name"];
       $doctors->email = $request["email"];
       $doctors->country_id = $request["country_id"];
-      $doctors->password = $request["password"];
+      $doctors->password = bcrypt($request["password"]);
       $doctors->job_id = $request["job_id"];
       $doctors->phone_number = $request["phone_number"];
       $doctors->hospital_name = $request["hospital_name"];
