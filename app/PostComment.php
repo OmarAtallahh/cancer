@@ -8,7 +8,10 @@ class PostComment extends Model {
 	protected $fillable = ['body'];
 
 	public function user() {
-		return $this->belongsTo(User::class);
+		if ($this->type == 'doctor') {
+			return Doctor::find($this->user_id);
+		}
+		return User::find($this->user_id);
 	}
 
 	public function post() {

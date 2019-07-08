@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
 use App\Post;
+use App\PostComment;
 use Illuminate\Http\Request;
-use Sentinel;
 
 class PostCommentsController extends Controller {
 	/**
@@ -14,7 +13,7 @@ class PostCommentsController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		return view('comments.index')->with('comments', Comment::all());
+		return view('comments.index')->with('comments', PostComment::all());
 	}
 
 	/**
@@ -25,14 +24,23 @@ class PostCommentsController extends Controller {
 	 */
 	public function store(Post $post) {
 		request()->validate([
-			'comment' => 'required|max:500|min:3',
+			'body' => 'required|max:500|min:3',
 		]);
 
-		$comment = new Comment();
+		$comment = new PostComment();
 
-		$comment->body = request('comment');
-		$comment->user_id = Sentinel::getUser()->id;
-		$comment->post()->associate($post);
+		$comment->body = request('body');
+		$comment->user_id = auth()->id();
+
+		if (auth('doctor')->check()) {
+
+			$comment->type = 'doctor';
+		} else {
+
+			$comment->type = 'user';
+		}
+
+		$comment->post_id = $post->id;
 		$comment->save();
 
 		return back()->with('success', 'Comment Added!');
@@ -45,7 +53,7 @@ class PostCommentsController extends Controller {
 	 * @param  \App\Comment  $comment
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show(Comment $comment) {
+	public function show(PostComment $comment) {
 		return view('posts.show')->with('post', $comment->post);
 	}
 
@@ -55,7 +63,7 @@ class PostCommentsController extends Controller {
 	 * @param  \App\Comment  $comment
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit(Comment $comment, Post $post) {
+	public function edit(PostComment $comment, Post $post) {
 		return view('posts.show', ['post', $comment->post, 'comment' => $comment]);
 	}
 
@@ -66,7 +74,7 @@ class PostCommentsController extends Controller {
 	 * @param  \App\Comment  $comment
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Comment $comment) {
+	public function update(PostComment $comment) {
 		request()->validate([
 			'comment' => 'required|max:500|min:3',
 		]);
@@ -86,7 +94,7 @@ class PostCommentsController extends Controller {
 	 * @param  \App\Comment  $comment
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy(Comment $comment) {
+	public function destroy(PostComment $comment) {
 		$comment->delete();
 
 		return back()->with('success', 'Comment Deleted');

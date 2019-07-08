@@ -5,8 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class ArticleComment extends Model {
-	public function post() {
-		return $this->belongsTo(Post::class);
+	public function article() {
+		return $this->belongsTo(Article::class);
 	}
 
 	public function user() {
