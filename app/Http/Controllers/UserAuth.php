@@ -61,7 +61,7 @@ class UserAuth extends Controller {
 
 		$user = Doctor::create($data);
 
-		auth('web')->login($user);
+		auth('doctor')->login($user);
 
 		return view('main.index')->with('success', 'Logged In');
 	}
@@ -78,7 +78,7 @@ class UserAuth extends Controller {
 
 		if ($user and Hash::check($request->password, $user->password)) {
 
-			auth()->login($user);
+			auth('web')->login($user);
 			return view('main.index')->with('success', 'Logged IN');
 		}
 
@@ -86,7 +86,7 @@ class UserAuth extends Controller {
 
 		if ($doctor and Hash::check($request->password, $doctor->password)) {
 
-			auth()->login($doctor);
+			auth('doctor')->login($doctor);
 			return view('main.index')->with('success', 'Logged IN');
 		}
 
@@ -96,6 +96,7 @@ class UserAuth extends Controller {
 
 	public function logout() {
 
+		auth('doctor')->logout();
 		auth('web')->logout();
 
 		return back();

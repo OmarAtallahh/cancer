@@ -27,7 +27,7 @@ Route::group(['middleware' => 'notauth'], function () {
 
 	Route::get('/doctor/register', 'UserAuth@getDoctorRegister')->name('doctor_register');
 	Route::post('/doctor/register', 'UserAuth@doctor_register')->name('doctor_register');
-																																																																																																																																																																																																														
+
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -52,3 +52,15 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/doctor', 'DoctorController@search');
 
 });
+
+Route::resource('posts', 'PostsController');
+
+Route::resource('articles', 'ArticlesController');
+
+Route::get('/post-comments', 'PostCommentsController@index')->name('post-comments.index');
+Route::post('/post-comments/{post}', 'PostCommentsController@store')->name('post-comments.store');
+Route::delete('/post-comments/{comment}', 'PostCommentsController@destroy')->name('post-comments.destroy');
+
+Route::get('/article-comments', 'ArticleCommentsController@index')->name('article-comments.index');
+Route::post('/article-comments/{article}', 'ArticleCommentsController@store')->name('article-comments.store');
+Route::delete('/article-comments/{comment}', 'ArticleCommentsController@destroy')->name('article-comments.destroy');
