@@ -27,10 +27,15 @@
                     <li><a href="/main/about"> about Predict me</a></li>
                 </ul>
 
-                @if(auth('web')->check())
+                @if(auth('web')->check() || auth('doctor')->check())
 
                     <ul class="nav navbar-nav">
+
+                        <li><a href="/posts" class="btn btn-secondary"> Posts </a></li>
+                        <li><a href="/articles" class="btn btn-secondary"> Articles </a></li>
+
                         <li><a href="/logout" class="btn btn-secondary"> Logout </a></li>
+
                     </ul>
 
                 @else

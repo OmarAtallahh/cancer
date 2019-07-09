@@ -3,13 +3,51 @@
 @section("title")
 Articles
 @endsection
-
+@section("js")
+<script type="text/javascript">
+   CKEDITOR.replace('body')
+   $('.textarea').wysihtml5();
+</script>
+@endsection
 @section('content')
 <!-- Page Content -->
 
   <div class="container">
 
     <div class="row">
+
+      @if(auth('doctor')->check())
+      <div class="col-md-8">
+        <span>Add Article</span>
+
+        <form action="{{ route('articles.store') }}" enctype="multipart/form-data" method="POST">
+          {{ csrf_field() }}
+            <div class="form-group">
+
+              <input type="text" class="form-control" name="title">
+
+            </div>
+
+            <div class="form-group">
+
+
+              <textarea name="body" class="form-control"></textarea>
+
+            </div>
+
+            <div class="form-group">
+
+              <input type="file" class="form-control" name="image">
+
+            </div>
+
+
+            <input type="submit" class="btn btn-primary" value="Create">
+        </form>
+
+      </div>
+
+      @endif
 
       <!-- Blog Entries Column -->
       <div class="col-md-8">
@@ -21,10 +59,14 @@ Articles
         @forelse($articles as $article)
         <!-- Blog Post -->
           <div class="card mb-4">
+            @if($article->image)
+            <img class="card-img-top" src="{{ asset('image/' . $article->image) }}" alt="Card image cap">
+            @else
             <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+            @endif
             <div class="card-body">
               <h2 class="card-title">{{ $article->title }}</h2>
-              <p class="card-text">{{ $article->body }}</p>
+              <p class="card-text">{!! $article->body !!}</p>
               <a href="{{ route('articles.show' , $article->id) }}" class="btn btn-primary">Read More &rarr;</a>
             </div>
             <div class="card-footer text-muted">

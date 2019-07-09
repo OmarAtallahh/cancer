@@ -23,6 +23,7 @@ class CreateDoctorsTable extends Migration {
 			$table->boolean('isdelete', 0)->default(0);
 			$table->integer('created_by');
 			$table->integer('updated_by');
+			$table->rememberToken();
 			$table->timestamps();
 		});
 	}

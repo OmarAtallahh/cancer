@@ -37,53 +37,30 @@ class ArticlesController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request) {
+
 		$data = request()->validate([
-			'title' => 'required|string|min:3|max:32|alpha_dash|unique:articles,title',
+			'title' => 'required|string|min:3|max:32',
 			'body' => [
-				'required', 'string', 'regex:/^[a-zA-Z0-9-_. ]+$/', 'min:3', 'max:300',
+				'required', 'string', 'min:3', 'max:300',
 			],
 
-			'imagePath' => 'nullable|max:1999|image|mimes:png,jpg,jpeg',
-
-			'tags' => [
-				'required', 'regex:/^[a-zA-Z0-9-_., ]+$/', 'min:3', 'max:32', 'string',
-			],
+			'image' => 'nullable|max:1999|image',
 		]);
 
-		if (Tag::assignTags(request('tags'))) {
+		if (request()->hasFile('image')) {
 
-			if (request()->hasFile('imagePath')) {
-
-				$file_with_ext = request()->file('imagePath')->getClientOriginalName();
-				$file_ext = request()->file('imagePath')->getClientOriginalExtension();
-				$file_new_name = sha1(str_random(40) . time()) . '.' . $file_ext;
-				request()->file('imagePath')->move(public_path() . '/images/', $file_new_name);
-				$data['imagePath'] = $file_new_name;
-			}
-
-			$data['admin_id'] = Sentinel::getUser()->id;
-
-			unset($data['tags']);
-
-			$article = article::forceCreate($data);
-
-			if (is_array(session('tags'))) {
-
-				foreach (session('tags') as $tag) {
-
-					$article->tags()->attach($tag);
-
-				}
-
-			} else {
-				$article->tags()->attach(session('tags'));
-			}
-
-			session()->forget('tags');
-
-			return redirect()->route('articles.index')->with('success', 'article Has Been Created Successfully');
-
+			$file_with_ext = request()->file('image')->getClientOriginalName();
+			$file_ext = request()->file('image')->getClientOriginalExtension();
+			$file_new_name = sha1(str_random(40) . time()) . '.' . $file_ext;
+			request()->file('image')->move(public_path() . '/image/', $file_new_name);
+			$data['image'] = $file_new_name;
 		}
+
+		$data['doctor_id'] = auth('doctor')->id();
+
+		$post = Article::forceCreate($data);
+
+		return redirect()->route('articles.index')->with('success', 'Article Has Been Created Successfully');
 
 	}
 

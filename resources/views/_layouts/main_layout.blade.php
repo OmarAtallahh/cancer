@@ -52,6 +52,14 @@ License: You must have a valid license purchased only from themeforest(the above
         @endif
 
 
+      <link rel="stylesheet" href="{{ url('/jstree/themes/default/style.css') }}">
+
+      <link rel="stylesheet" href="{{ url('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+
+
+
+
+
         @yield("css")
       </head>
     <!-- END HEAD -->
@@ -95,6 +103,13 @@ License: You must have a valid license purchased only from themeforest(the above
                 });
             })
         </script>
+
+        <script src="{{ url('bower_components/fastclick/lib/fastclick.js')}}"></script>
+
+        <script src="{{ url('bower_components/ckeditor/ckeditor.js') }}"></script>
+        <!-- Bootstrap WYSIHTML5 -->
+        <script src="{{ url('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
+
         @yield("js")
     </body>
 
