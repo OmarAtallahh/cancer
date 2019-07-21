@@ -21,8 +21,8 @@ class CreateDoctorsTable extends Migration {
 			$table->bigInteger('phone_number');
 			$table->string('hospital_name', 100);
 			$table->boolean('isdelete', 0)->default(0);
-			$table->integer('created_by');
-			$table->integer('updated_by');
+			$table->integer('created_by')->nullable();
+			$table->integer('updated_by')->nullable();
 			$table->rememberToken();
 			$table->timestamps();
 		});

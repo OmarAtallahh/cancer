@@ -18,4 +18,8 @@ class Post extends Model {
 		return PostComment::where('post_id', $this->id)->orderBy('created_at', 'DESC')->get();
 	}
 
+	public function getImageAttribute($image) {
+		return 'image/' . $image;
+	}
+
 }

@@ -39,7 +39,7 @@ class ArticlesController extends Controller {
 	public function store(Request $request) {
 
 		$data = request()->validate([
-			'title' => 'required|string|min:3|max:32',
+			'title' => 'required|unique:articles,title|string|min:3|max:32',
 			'body' => [
 				'required', 'string', 'min:3', 'max:300',
 			],

@@ -30,7 +30,7 @@ Route::group(['middleware' => 'notauth'], function () {
 
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'user'], function () {
 
 	Route::get('/logout', 'UserAuth@logout')->name('logout');
 

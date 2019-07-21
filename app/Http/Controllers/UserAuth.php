@@ -15,6 +15,7 @@ class UserAuth extends Controller {
 	}
 
 	function getDoctorRegister(Request $request) {
+
 		return view('main.doctor_register');
 	}
 

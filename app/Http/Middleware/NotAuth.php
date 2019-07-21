@@ -15,7 +15,7 @@ class NotAuth {
 	 */
 	public function handle($request, Closure $next) {
 
-		if (Auth::guard('web')->check()) {
+		if (Auth::guard('web')->check() || Auth::guard('doctor')->check()) {
 			return back();
 		}
 

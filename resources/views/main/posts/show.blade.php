@@ -33,12 +33,19 @@ Post {{ $post->title }}
         <hr>
 
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="http://placehold.it/500x300" alt="">
+
+        @if($post->image)
+
+          <img class="img-fluid rounded" src="{{ asset($post->image) }}" alt="">
+        @else
+        <!-- Preview Image -->
+          <img class="img-fluid rounded" src="http://placehold.it/500x300" alt="">
+        @endif
 
         <hr>
 
         <!-- Post Content -->
-        <p class="lead">{{ $post->body }}</p>
+        <p class="lead">{!! $post->body !!}</p>
 
 
         <hr>
