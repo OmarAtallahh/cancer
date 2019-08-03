@@ -17,7 +17,6 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::get('/admin/reports', 'AdminController@problems');
 		Route::resource('/admin', 'AdminController');
 		Route::get('/admin', 'AdminController@search')->name('admin.index');
-		Route::get('/admin', 'AdminController@search')->name('admin.index');
 
 	});
 
